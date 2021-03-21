@@ -23,8 +23,8 @@ function Header() {
             <div className="nav-scroller py-1 container">
                 <nav className="nav d-flex justify-content-between">
                     <Link className="p-2 header-link" to="/">Vessel Schedule</Link>
-                    <Link className="p-2 header-link" to="/alerts">Alerts Configured</Link>
-                    <Link className="p-2 header-link" to="/alerts">Alerts Triggered</Link>
+                    <Link className="p-2 header-link" to="/alertsConfigured">Alerts Configured</Link>
+                    <Link className="p-2 header-link" to="/alertsTriggered">Alerts Triggered</Link>
                 </nav>
             </div>
         </div>
