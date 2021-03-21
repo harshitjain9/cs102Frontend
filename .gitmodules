@@ -1,0 +1,3 @@
+[submodule "frontend/frontend/findmylawyer_frontend"]
+	path = frontend/frontend/findmylawyer_frontend
+	url = https://github.com/harshitjain9/findmylawyer_frontend.git
