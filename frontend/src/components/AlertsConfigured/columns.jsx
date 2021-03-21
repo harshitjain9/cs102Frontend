@@ -1,4 +1,3 @@
-import {SelectColumnFilter} from "./SelectColumnFilter";
 export const COLUMNS = [
 
     {
@@ -35,9 +34,7 @@ export const COLUMNS = [
     },
     {
         Header: "Status",
-        accessor: "status",
-        Filter: SelectColumnFilter,
-        disableSortBy: true
+        accessor: "status"
     }
     
 ]
