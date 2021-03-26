@@ -4,15 +4,17 @@ import Header from "./Header/Header";
 import VesselSchedules from "./VesselSchedules/VesselSchedules";
 import AlertsConfigured from "./AlertsConfigured/AlertsConfigured";
 import AlertsTriggered from "./AlertsTriggered/AlertsTriggered";
+import Login from "./LoginPage/Login";
 
 function App() {
   return (
     <Router>
-      <Header />
+      <Header/>
       <Switch>
-            <Route path='/' exact component={VesselSchedules} />
+            <Route path='/vesselSchedules' exact component={VesselSchedules} />
             <Route path='/alertsConfigured' component={AlertsConfigured} />
             <Route path="/alertsTriggered" component={AlertsTriggered} />
+            <Route path="/" component = {Login}/>
           </Switch>
     </Router>
   );
