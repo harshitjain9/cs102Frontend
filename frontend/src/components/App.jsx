@@ -6,6 +6,8 @@ import VesselSchedules from "./VesselSchedules/VesselSchedules";
 import AlertsConfigured from "./AlertsConfigured/AlertsConfigured";
 import AlertsTriggered from "./AlertsTriggered/AlertsTriggered";
 import Login from "./LoginPage/Login";
+import Registration from "./Registration/Registration";
+import ForgotPassword from "./ForgotPassword/forgotPassword"
 
 function App() {
   return (
