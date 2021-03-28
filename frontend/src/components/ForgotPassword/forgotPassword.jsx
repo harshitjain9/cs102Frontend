@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./Login.css";
+import "./forgotPassword.css";
 
-export default function Login() {
+export default function forgotPassword() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,17 +16,8 @@ export default function Login() {
   }
 
   return (
-    <div className="Login">
+    <div className="forgotPassword">
       <Form onSubmit={handleSubmit}>
-      <Form.Group size="lg" controlId="email">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            autoFocus
-            type="name"
-            value={name}
-            
-          />
-        </Form.Group>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -36,16 +27,8 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Enter Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login
+          Send Password Reset Link
         </Button>
       </Form>
     </div>
