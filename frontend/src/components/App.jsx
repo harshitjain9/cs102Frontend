@@ -6,7 +6,8 @@ import VesselSchedules from "./VesselSchedules/VesselSchedules";
 import AlertsConfigured from "./AlertsConfigured/AlertsConfigured";
 import AlertsTriggered from "./AlertsTriggered/AlertsTriggered";
 import Login from "./LoginPage/Login";
-
+import WebServicesSettings from "./WebServicesSettings/WebServicesSettings";
+import EmailSettings from "./EmailSettings/EmailSettings"
 function App() {
   return (
     <Router>
@@ -15,7 +16,9 @@ function App() {
             <Route path='/vesselSchedules' exact component={VesselSchedules} />
             <Route path='/alertsConfigured' component={AlertsConfigured} />
             <Route path="/alertsTriggered" component={AlertsTriggered} />
-            <Route path="/" component = {Login}/>
+            <Route path="/Login" component = {Login}/>
+            <Route path = "/WebServicesSettings" component = {WebServicesSettings}/>
+            <Route path = "/" component = {EmailSettings}/>
       </Switch>
       <Footer/>
     </Router>

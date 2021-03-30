@@ -23,7 +23,7 @@ export default function Login() {
           <Form.Control
             autoFocus
             type="name"
-            value={name}
+            //value={name}
             
           />
         </Form.Group>
