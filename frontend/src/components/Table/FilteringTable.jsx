@@ -9,11 +9,11 @@ import "./FilteringTable.css";
 
 function FilteringTable({ columns, data, mockdata, placeholder, title, url, filterValue = "" }) {
 
-
-
     const history = useHistory();
     function handleRowClick(row) {
-        history.push(`/${url}/${row.original._id}`);
+        if (row.original.fullVslM != null || row.original.fullVslM != "") {
+            history.push(`/${url}/${row.original.fullVslM}/${row.original.inVoyN}`);
+        }
     }
 
     const defaultColumn = useMemo(() => {

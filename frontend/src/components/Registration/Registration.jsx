@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./Registration.css";
 
 export default function Registration() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,13 +19,13 @@ export default function Registration() {
   return (
     <div className="Registration">
       <Form onSubmit={handleSubmit}>
-      <Form.Group size="lg" controlId="email">
+        <Form.Group size="lg" controlId="email">
           <Form.Label>Name</Form.Label>
           <Form.Control
             autoFocus
             type="name"
             value={name}
-            
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="email">
