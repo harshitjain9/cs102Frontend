@@ -123,7 +123,7 @@ export const tokenConfig = getState => {
 
     //If token, then add to headers
     if (token) {
-        config.headers['Authorization'] = token;
+        config.headers['Authorization'] = `Bearer ${token}`;
     }
 
     return config;

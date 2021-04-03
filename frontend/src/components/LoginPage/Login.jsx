@@ -35,7 +35,11 @@ const Login = ({ auth, login, error }) => {
 
   useEffect(() => {
     if (auth.isAuthenticated === true) {
-      history.push("/");
+      if (auth.user.username == "admin@psa.com") {
+        history.push("/webServicesSettings");
+      } else {
+        history.push("/");
+      }
     }
   }, [auth]);
 
