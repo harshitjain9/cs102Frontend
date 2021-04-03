@@ -33,7 +33,7 @@ function Header({ auth, logoutUser }) {
                             </div>
                             <Link to="/"><img className="logo-img" /></Link>
                             <div className="col-4 d-flex justify-content-end align-items-center">
-                                {auth.isLoggedIn ? authLinks : guestLinks}
+                                {auth.isAuthenticated ? authLinks : guestLinks}
                             </div>
                         </div>
                     </div>

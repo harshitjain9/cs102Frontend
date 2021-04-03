@@ -1,18 +1,20 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 import { forgotPassword } from "../../actions/authActions";
 import { connect } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import "./forgotPassword.css";
 
-function ForgotPassword({auth, forgotPassword}) {
+function ForgotPassword({ auth, error, forgotPassword }) {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0 && password==newPassword && dateOfBirth!="";
+    return email.length > 0 && password.length > 0 && password == newPassword && dateOfBirth != "";
   }
 
   function handleSubmit(event) {
@@ -20,10 +22,31 @@ function ForgotPassword({auth, forgotPassword}) {
     forgotPassword(email, password, dateOfBirth);
   }
 
+  function resetForm() {
+    setEmail("");
+    setDateOfBirth("");
+    setPassword("");
+    setNewPassword("");
+  }
+
+  useEffect(() => {
+    if (error.status != null) {
+      resetForm();
+      setErrorMsg("Invalid email.");
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (auth.passwordChanged == true) {
+      history.push("/login");
+    }
+  }, [auth]);
+
   return (
     <div className="forgotPassword container">
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
+          {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
@@ -68,7 +91,8 @@ function ForgotPassword({auth, forgotPassword}) {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => {

@@ -7,7 +7,7 @@ import AlertsConfigured from "./AlertsConfigured/AlertsConfigured";
 import AlertsTriggered from "./AlertsTriggered/AlertsTriggered";
 import Login from "./LoginPage/Login";
 import Registration from "./Registration/Registration";
-import ForgotPassword from "./ForgotPassword/ForgotPassword"
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import WebServicesSettings from "./WebServicesSettings/WebServicesSettings";
 import EmailSettings from "./EmailSettings/EmailSettings";
 import SingleVessel from "./SingleVessel/SingleVessel";

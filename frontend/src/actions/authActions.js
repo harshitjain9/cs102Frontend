@@ -9,7 +9,8 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     UPDATE_FAIL,
-    UPDATE_SUCCESS
+    UPDATE_SUCCESS,
+    PASSWORD_CHANGED
 } from './types';
 import axios from "axios";
 import { returnErrors, clearErrors } from "./errorActions"
@@ -55,6 +56,9 @@ export const forgotPassword = (email, password, dateOfBirth) => (dispatch, getSt
     axios.put("http://localhost:8080/accounts/", body, config)
         .then(res => {
             dispatch(clearErrors());
+            return dispatch({
+                type: PASSWORD_CHANGED
+            })
         })
         .catch(err => {
             dispatch(
@@ -101,31 +105,9 @@ export const loginRequest = () => {
 }
 
 export const logoutUser = () => {
-    // return dispatch => {
-    //     dispatch(logoutRequest());
-    //     localStorage.removeItem('jwt');
-    //     dispatch(success(""));
-    // }
-}
-
-export const logoutRequest = () => {
-    // return {
-    //     type: LOGOUT_REQUEST
-    // }
-}
-
-export const success = isLoggedIn => {
-    // return {
-    //     type: SUCCESS,
-    //     payload: isLoggedIn
-    // }
-}
-
-export const failure = () => {
-    // return {
-    //     type: FAILURE,
-    //     payload: false
-    // }
+    return {
+        type: LOGOUT_SUCCESS
+    };
 }
 
 export const tokenConfig = getState => {

@@ -5,11 +5,11 @@ import { login } from "../../actions/authActions";
 import { useHistory } from 'react-router-dom';
 import "./Login.css";
 
-const Login = ({ auth, login }) => {
+const Login = ({ auth, login, error }) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -20,34 +20,38 @@ const Login = ({ auth, login }) => {
     setPassword("");
   }
 
+  function newAccount() {
+    history.push('/createAccount');
+  }
+
+  function forgotPassword() {
+    history.push('/forgotPassword');
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     login(email, password);
-    // setTimeout(() => {
-    //   if (auth.isLoggedIn === true) {
-    //     history.push("/");
-    //   }
-    //   if (auth.isLoggedIn === false) {
-    //     resetLoginForm();
-    //     setError("Invalid email and password");
-    //   }
-    // }, 500)
   }
 
   useEffect(() => {
-    if (auth.isLoggedIn === true) {
+    if (auth.isAuthenticated === true) {
       history.push("/");
     }
-    if (auth.isLoggedIn === false) {
-      resetLoginForm();
-      setError("Invalid email and password");
-    }
   }, [auth]);
+
+  useEffect(() => {
+    if (error.status != null) {
+      resetLoginForm();
+      setErrorMsg("Invalid email and password");
+    }
+  }, [error]);
+
+
 
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>
-        {error && <Alert variant="danger">{error}</Alert>}
+        {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -58,15 +62,21 @@ const Login = ({ auth, login }) => {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
-          <Form.Label>Enter Password</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button block size="lg" variant="success" type="submit" disabled={!validateForm()}>
           Login
+        </Button>
+        <Button block size="lg" variant="info" onClick={newAccount}>
+          Create New Account
+        </Button>
+        <Button block size="lg" variant="danger" onClick={forgotPassword}>
+          Forgot Password
         </Button>
       </Form>
     </div>
@@ -74,7 +84,8 @@ const Login = ({ auth, login }) => {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => {
