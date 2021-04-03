@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import FilteringTable from "../Table/FilteringTable";
 import { COLUMNS } from "./columns";
 import MOCK_DATA from "./MOCK_DATA.json";
+import axios from "axios";
 
 
 function VesselSchedules() {
@@ -11,13 +12,18 @@ function VesselSchedules() {
         fetchItems();
     }, [])
 
-    const fetchItems = async () => {
-        fetch("http://localhost:8080/vessels")
-            .then(response => response.json())
+    const fetchItems = async () => {  
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('jwt')}`
+            }
+        };
+
+        axios.get("http://localhost:8080/vessels", config)
+            .then(response => response.data)
             .then(items => {
                 setItems(items)
             })
-        console.log("yo");
         console.log(items);
     };
 
