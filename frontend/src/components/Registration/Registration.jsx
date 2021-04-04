@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
+import {Form, Button, Alert} from "react-bootstrap";
 import { createAccount } from "../../actions/authActions";
 import { connect } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import "./Registration.css";
 
-function Registration({auth, createAccount}) {
+function Registration({auth, createAccount, error}) {
+  const history = useHistory();
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0 && password==newPassword;
@@ -20,10 +22,31 @@ function Registration({auth, createAccount}) {
     createAccount(email, password, dateOfBirth)
   }
 
+  function resetForm() {
+    setEmail("");
+    setDateOfBirth("");
+    setPassword("");
+    setNewPassword("");
+  }
+
+  useEffect(() => {
+    if (auth.isAuthenticated === true) {
+      history.push("/");
+    }
+  }, [auth]);
+
+  useEffect(() => {
+    if (error.status != null) {
+      resetForm();
+      setErrorMsg("User already exists.");
+    }
+  }, [error]);
+
   return (
     <div className="Registration">
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
+        {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
@@ -58,7 +81,7 @@ function Registration({auth, createAccount}) {
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Register
+        Create New Account
         </Button>
       </Form>
     </div>
@@ -66,7 +89,8 @@ function Registration({auth, createAccount}) {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  error:state.error
 });
 
 const mapDispatchToProps = dispatch => {
