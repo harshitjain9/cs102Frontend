@@ -11,6 +11,9 @@ function FilteringTable({ columns, data, mockdata, placeholder, title, url, filt
 
     const history = useHistory();
     function handleRowClick(row) {
+        if (url="alertsTriggered") {
+            return;
+        }
         if (row.original.fullVslM != null || row.original.fullVslM != "") {
             history.push(`/${url}/${row.original.fullVslM}/${row.original.inVoyN}`);
         }

@@ -1,40 +1,44 @@
 export const COLUMNS = [
 
     {
-        Header: "Vessel's Name",
-        accessor: "vesselName "
+        Header: "Vessel's Long Name",
+        accessor: "fullVslM",
+        Cell: ({ value }) => {
+            if (value == null) {
+                return "N/A";
+            }
+            return value
+        }
     },
     {
         Header: "Incoming Voyage Number",
-        accessor: "incomingVoyageNumber"
+        accessor: "inVoyN",
+        Cell: ({ value }) => {
+            if (value == null) {
+                return "N/A";
+            }
+            return value
+        }
     },
     {
-        Header: "Outgoing Voyage Number",
-        accessor: "outgoingVoyageNumber"
+        Header: "Time",
+        accessor: "time",
+        Cell: ({ value }) => {
+            if (value == null) {
+                return "N/A";
+            }
+            return value
+        }
     },
     {
-        Header: "Average Speed",
-        accessor: "averageSpeed"
-    },
-    {
-        Header: "Distance To Go",
-        accessor: "distanceToGo"
-    },
-    {
-        Header: "Berthing Time",
-        accessor: "berthingTime"
-    },
-    {
-        Header: "Departure Time",
-        accessor: "departureTime"
-    },
-    {
-        Header: "Berth Number",
-        accessor: "berthNumber"
-    },
-    {
-        Header: "Status",
-        accessor: "status"
+        Header: "Message",
+        accessor: "message",
+        Cell: ({ value }) => {
+            if (value == null) {
+                return "N/A";
+            }
+            return value
+        }
     }
-    
+
 ]
