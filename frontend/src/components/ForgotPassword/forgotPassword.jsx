@@ -3,9 +3,9 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { forgotPassword } from "../../actions/authActions";
 import { connect } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import "./forgotPassword.css";
+import "./ForgotPassword.css";
 
-function ForgotPassword({ auth, error, forgotPassword }) {
+function ForgotPassword({ auth, error, forgotPassword}) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
