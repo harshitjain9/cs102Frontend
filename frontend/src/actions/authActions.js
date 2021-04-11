@@ -13,7 +13,8 @@ import {
     PASSWORD_CHANGED
 } from './types';
 import axios from "axios";
-import { returnErrors, clearErrors } from "./errorActions"
+import { returnErrors, clearErrors } from "./errorActions";
+// import bcrypt from "bcrypt";
 
 export const login = (email, password) => (dispatch) => {
     // Headers
