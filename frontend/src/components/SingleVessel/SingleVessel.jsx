@@ -112,8 +112,52 @@ function SingleVessel({ match, auth }) {
         <div className="container">
             <h1 className="heading">{item.vessel_NAME}</h1>
             <div class="row custom-row">
-                <div class="col-6">
-                    <p><span className="category">Incoming Voyage Number:</span> {item.inVoyN == null ? "N/A" : item.inVoyN}</p>
+                <div class = "col-2"></div>
+                <div class="col-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row">Incoming Voyage Number</th>
+                            <td>{item.inVoyN == null ? "N/A" : item.inVoyN}</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Outgoing Voyage Number</th>
+                            <td>{item.outVoyN == null ? "N/A" : item.outVoyN}</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Average Speed</th>
+                            <td>{item.avg_SPEED == null ? "N/A" : item.avg_SPEED}</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Maximum Speed</th>
+                            <td>{item.max_SPEED == null ? "N/A" : item.max_SPEED}</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Berth Number</th>
+                            <td>{item.berthN == null ? "N/A" : item.berthN}</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Distance To Go</th>
+                            <td>{item.distance_TO_GO == null ? "N/A" : item.distance_TO_GO}</td>
+                            </tr>
+                            {item.is_PATCHING_ACTIVATED == 0 ? <tr><th className="category">Berthing Time </th> <td>{item.predicted_BTR == null ? "N/A" : item.predicted_BTR} </td> </tr>: <tr><th className="category">Berthing Time</th> <td>{item.patching_PREDICTED_BTR == null ? "N/A" : item.patching_PREDICTED_BTR} </td></tr>}
+                            <tr>
+                            <th scope="row">Unberthing Time</th>
+                            <td>{item.unbthgDt == null ? "N/A" : item.unbthgDt}</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Status</th>
+                            <td>{item.status == null ? "N/A" : item.status}</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    {/* <p><span className="category">Incoming Voyage Number:</span> {item.inVoyN == null ? "N/A" : item.inVoyN}</p>
                     <p><span className="category">Outgoing Voyage Number:</span> {item.outVoyN == null ? "N/A" : item.outVoyN}</p>
                     <p><span className="category">Average Speed:</span> {item.avg_SPEED == null ? "N/A" : item.avg_SPEED}</p>
                     <p><span className="category">Maximum Speed:</span> {item.max_SPEED == null ? "N/A" : item.max_SPEED}</p>
@@ -121,21 +165,23 @@ function SingleVessel({ match, auth }) {
                     <p><span className="category">Distance To Go:</span> {item.distance_TO_GO == null ? "N/A" : item.distance_TO_GO} </p>
                     {item.is_PATCHING_ACTIVATED == 0 ? <p><span className="category">Berthing Time: </span> {item.predicted_BTR == null ? "N/A" : item.predicted_BTR} </p> : <p><span className="category">Berthing Time</span> {item.patching_PREDICTED_BTR == null ? "N/A" : item.patching_PREDICTED_BTR} </p>}
                     <p><span className="category">Unberthing Time:</span> {item.unbthgDt == null ? "N/A" : item.unbthgDt} </p>
-                    <p><span className="category">Status:</span> {item.status == null ? "N/A" : item.status} </p>
+                    <p><span className="category">Status:</span> {item.status == null ? "N/A" : item.status} </p> */}
 
                 </div>
-                <div class="col-6">
-                    <Button variant="success" onClick={addAlert}>
+                <div class="col-2">
+                    <br/>
+                    <Button variant="success" block onClick={addAlert}>
                         Add Alert
-        </Button>
-                    <br /> <br />
-                    <Button variant="danger" onClick={deleteAlert}>
+                    </Button>
+                    <br/>
+                    <Button variant="danger" block onClick={deleteAlert}>
                         Delete Alert
-        </Button>
-                    <br /> <br />
+                    </Button>
+                    <br /><br/>
                     {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
                     {successMsg && <Alert variant="success">{successMsg}</Alert>}
-                </div>
+            </div>
+                
             </div>
         </div>
 
