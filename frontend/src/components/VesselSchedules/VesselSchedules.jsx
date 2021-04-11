@@ -4,7 +4,6 @@ import { COLUMNS } from "./columns";
 import MOCK_DATA from "./MOCK_DATA.json";
 import axios from "axios";
 
-
 function VesselSchedules() {
     const [items, setItems] = useState([]);
 
@@ -12,13 +11,12 @@ function VesselSchedules() {
         fetchItems();
     }, [])
 
-    const fetchItems = async () => {  
+    const fetchItems = async () => {
         const config = {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('jwt')}`
             }
         };
-
         axios.get("http://localhost:8080/vessels", config)
             .then(response => response.data)
             .then(items => {
