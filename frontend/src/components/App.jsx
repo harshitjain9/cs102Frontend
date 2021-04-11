@@ -11,6 +11,8 @@ import ForgotPassword from "./ForgotPassword/forgotPassword.jsx";
 import WebServicesSettings from "./WebServicesSettings/WebServicesSettings";
 import EmailSettings from "./EmailSettings/EmailSettings";
 import SingleVessel from "./SingleVessel/SingleVessel";
+import Dashboard from "./LoginModal/Loginmodal";
+
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
         <Route path="/ForgotPassword" component={ForgotPassword} />
         <Route path="/createAccount" component={Registration} />
         {/* <Route path="/" exact component={VesselSchedules} /> */}
-        <Route path="/" exact component={SingleVessel} />
+        <Route path="/SingleVessel" exact component={SingleVessel} />
+        <Route path="/" exact component={Dashboard} />
+
 
       </Switch>
       <Footer />
