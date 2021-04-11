@@ -3,9 +3,9 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { forgotPassword } from "../../actions/authActions";
 import { connect } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import "./ForgotPassword.css";
+// import "./forgotPassword.css";
 
-function ForgotPassword({ auth, error, forgotPassword}) {
+function ForgotPassword({ auth, error, forgotPassword }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -101,4 +101,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
+export default connect(mapStateToProps, mapDispatchToProps)(forgotPassword);
